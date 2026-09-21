@@ -1,0 +1,21 @@
+{
+  "name": "Agenda de Yassine",
+  "short_name": "Agenda",
+  "description": "Services Madeleine, cours et Kilua, ton assistant vocal.",
+  "lang": "fr",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F6F7FB",
+  "theme_color": "#F6F7FB",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Parler à Kilua", "short_name": "Kilua", "url": "./#kilua", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
