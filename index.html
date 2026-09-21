@@ -672,8 +672,15 @@ input[type="time"]{font:700 15px var(--sans);height:42px;padding:0 12px;border-r
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) pickDay(sel + (dx < 0 ? 1 : -1));
   }, {passive:true});
 
-  function onResize(){ renderGrid(); renderMobile(); }
-  if (mq.addEventListener) mq.addEventListener('change', onResize); else mq.addListener(onResize);
+  var wasPhone = phone();
+  function onResize(){
+    var p = phone();
+    if (p === wasPhone) return;
+    wasPhone = p;
+    renderGrid(); renderMobile();
+  }
+  if (mq.addEventListener) mq.addEventListener('change', onResize); else if (mq.addListener) mq.addListener(onResize);
+  window.addEventListener('resize', onResize);
   $('evDlg').addEventListener('click', function(ev){ if (ev.target === $('evDlg')) $('evDlg').close(); });
   $('shiftDlg').addEventListener('click', function(ev){ if (ev.target === $('shiftDlg')) $('shiftDlg').close('cancel'); });
 
