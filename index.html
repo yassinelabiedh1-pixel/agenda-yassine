@@ -273,7 +273,7 @@ body.k-open .kfab{display:none}
 .bub{max-width:88%;padding:9px 13px;border-radius:18px;font-size:13.5px;line-height:1.45;overflow-wrap:anywhere}
 .bub.me{align-self:flex-end;background:var(--accent);color:var(--on-accent);border-bottom-right-radius:6px}
 .bub.me.interim{opacity:.55}
-.bub.k{align-self:flex-start;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);border-bottom-left-radius:6px}
+.bub.kb{align-self:flex-start;background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line);border-bottom-left-radius:6px}
 .bub .link{font-size:13px}
 .tries{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-top:10px}
 .try{border:0;border-radius:12px;padding:7px 11px;background:var(--me-bg);color:var(--me-ink);font-size:12.5px;font-weight:700;text-align:left;cursor:pointer}
@@ -1020,7 +1020,7 @@ body.k-open .kfab{display:none}
               'Kilua, ajoute révision de maths demain de 18h à 20h',
               'Kilua, what do I have on Tuesday?',
               'Kilua, supprime Study French lundi prochain'];
-    bubble('k', 'Salut Yassine ! Je suis Kilua. Dis-moi quoi ajouter, supprimer ou lire dans ton agenda, en français ou en anglais.' +
+    bubble('kb', 'Salut Yassine ! Je suis Kilua. Dis-moi quoi ajouter, supprimer ou lire dans ton agenda, en français ou en anglais.' +
       (SR ? '' : ' La dictée n’est pas disponible dans ce navigateur (essaie Chrome, Edge ou Safari) : tu peux écrire ta demande en bas.') +
       '<div class="tries">' + ex.map(function(x){ return '<button type="button" class="try" data-try="' + esc(x) + '">' + esc(x) + '</button>'; }).join('') + '</div>');
   }
@@ -1048,7 +1048,7 @@ body.k-open .kfab{display:none}
       setTimeout(function(){ speechSynthesis.speak(u); }, 60);
     } catch (e) {}
   }
-  function reply(text, L, extraHtml){ bubble('k', esc(text) + (extraHtml || '')); say(text, L); }
+  function reply(text, L, extraHtml){ bubble('kb', esc(text) + (extraHtml || '')); say(text, L); }
 
   function startListen(continuous){
     if (!SR) { updateMicUI(); return; }
@@ -1098,9 +1098,9 @@ body.k-open .kfab{display:none}
     if (e === 'no-speech' || e === 'aborted') { if (!hands) setState('Je n’ai rien entendu. Touche le micro pour réessayer.'); return; }
     if (e === 'not-allowed' || e === 'service-not-allowed') {
       hands = false; $('kHands').checked = false;
-      bubble('k', 'Le micro est bloqué. Autorise-le pour ce site (icône du cadenas à côté de l’adresse), puis réessaie. Tu peux aussi écrire ta demande.');
-    } else if (e === 'network') bubble('k', 'La dictée a besoin d’internet. Vérifie ta connexion.');
-    else if (e === 'audio-capture') bubble('k', 'Aucun micro trouvé sur cet appareil.');
+      bubble('kb', 'Le micro est bloqué. Autorise-le pour ce site (icône du cadenas à côté de l’adresse), puis réessaie. Tu peux aussi écrire ta demande.');
+    } else if (e === 'network') bubble('kb', 'La dictée a besoin d’internet. Vérifie ta connexion.');
+    else if (e === 'audio-capture') bubble('kb', 'Aucun micro trouvé sur cet appareil.');
   }
   function onEnd(){
     listening = false;
@@ -1254,7 +1254,7 @@ body.k-open .kfab{display:none}
     if (un) {
       var gone = removeMine(un.getAttribute('data-undo'));
       un.remove();
-      if (gone) bubble('k', esc('Annulé : « ' + gone.title + ' » a été retiré.'));
+      if (gone) bubble('kb', esc('Annulé : « ' + gone.title + ' » a été retiré.'));
       return;
     }
     var del = ev.target.closest('[data-del]');
